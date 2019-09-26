@@ -64,17 +64,17 @@ class Figura {
     circuloClickeado(x,y){
         for (let index = 0; index < this.circulos.length; index++) {
             if (this.circulos[index].esCliqueado(x,y)) {
-                console.log("es click circulo");
-                return true;
+               
+                return this.circulos[index];
             }           
         }
-        return false;
+        return null;
     }
 
     centroClickeado(x,y){
-        console.log("es click centro");
+        
 
-        return this.centro.esCliqueado(x,y);
+        return this.centro.esCliqueado(x,y) ? this.centro : null;
     }
 
     

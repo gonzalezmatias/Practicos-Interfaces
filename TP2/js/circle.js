@@ -31,6 +31,13 @@ class Circle {
 
     sayHi(){
         console.log("hi");
+        console.log(this.posx);
+        console.log(this.posy);
+    }
+
+    nuevasCoordenadas(x,y){
+        this.posx = x;
+        this.posy = y;
     }
 
 

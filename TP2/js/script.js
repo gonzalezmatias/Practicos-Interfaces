@@ -5,6 +5,8 @@ let ctx = canvas.getContext('2d');
 let figura = new Figura(ctx);
 let cerrarFigura = document.getElementById("cerrarPoligono").addEventListener("click", cerrarPoligono)
 let figuras = [];
+let figuraSeleccionada = null;
+let mouseDown = false;
 
 canvas.onmousemove = function(e) { 
     let x = e.pageX - this.offsetLeft; 
@@ -18,7 +20,7 @@ canvas.onclick = function(e) {
     let y = e.pageY - this.offsetTop;
     document.getElementById("posxc").innerHTML = x;
     document.getElementById("posyc").innerHTML = y;
-      if(esVacio(x,y)){
+      if(esVacio(x,y) == null){
         let circle = new Circle(x,y,10,'red');
         circle.crearCirculo(ctx);
         figura.agregarCirculo(circle);
@@ -38,26 +40,40 @@ function cerrarPoligono(){
 
 
 function esVacio(x,y) {
-  // if (figura.circuloClickeado(x, y)) {
-  //   return false;
-  // } else 
   if (figuras.length > 0) {
     for (var i = 0; i < figuras.length; i++) {
-      const obj = figuras[i];
-      if (obj.circuloClickeado(x, y) || obj.centroClickeado(x, y)) {
-        return false;
+      let element = figuras[i];
+      if (element.circuloClickeado(x, y) !=null) {
+        return element.circuloClickeado(x, y);
+      }else{
+        if (element.centroClickeado(x, y) != null) {
+          return element.centroClickeado(x, y)
+        }
       }
     }
   }
-  return true;
+  return null;
 }
 
-// canvas.onmousedown = function (e) {
-//   for (let index = 0; index < figuras.length; index++) {
-//     const element = figuras[index];
-//     console.log(element.getCentro().esCliqueado(e.pageX,e.pageY))
-//   }
-// }
+canvas.onmousedown = function (e) {
+  let x = e.pageX - this.offsetLeft; 
+  let y = e.pageY - this.offsetTop;
+  if (esVacio(x,y) != null) {
+    figuraSeleccionada = esVacio(x,y);
+    figuraSeleccionada.sayHi();
+    mouseDown = true;
+
+  }
+  
+}
+
+canvas.onmousemove = function (e){
+  if (mouseDown) {
+    console.log("atroden")
+    figuraSeleccionada.nuevasCoordenadas(e.pageX,e.pageY)
+    
+  }
+}
 
 
 // function esVacio(event) {
