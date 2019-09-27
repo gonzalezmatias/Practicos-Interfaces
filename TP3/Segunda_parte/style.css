@@ -1,0 +1,27 @@
+.main{
+    margin: auto;
+    width: 800px;
+    height: 350px;
+    background: url('normal.png') left center;
+    background-size: auto;
+	background-repeat: repeat-x;
+    animation: back 4s linear infinite;
+    border: black 3px solid;
+}
+
+@keyframes back {
+    100% {background-position: -641px;}
+}
+
+.nami{
+    width: 44px;
+    height: 40px;
+    position: relative;
+    top: 234.5px;
+    background: url('total.png') left center;
+    animation: play 0.8s steps(6) infinite;
+}
+
+@keyframes play {
+    100% {background-position: -264px;}
+}
