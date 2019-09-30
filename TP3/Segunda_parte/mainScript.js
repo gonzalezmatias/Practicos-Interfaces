@@ -4,23 +4,26 @@
 
 // mainCharacter.addEventListener("keypress", saltar);
 
-const mainCharacter = document.querySelector('.nami');
+const mainCharacter = document.getElementById('character');
 const style = getComputedStyle(mainCharacter);
+let initialPos = 234.5;
 console.log(style.top);
 
-document.addEventListener("keydown", saltar);
-document.addEventListener("keyup", caer);
+document.addEventListener("keypress", saltar);
+
 
 
 function saltar(){
-    console.log("key down");
-    console.log(style.top);
-    mainCharacter.style.top = 180 + "px";
+    mainCharacter.classList.remove('nami');
+    mainCharacter.classList.add('jump');
+    mainCharacter.addEventListener('animationend',function(e){
+        mainCharacter.classList.remove('jump');
+        mainCharacter.classList.add('caer');
+        mainCharacter.addEventListener('animationend',function(e){
+            mainCharacter.classList.remove('caer');
+            mainCharacter.classList.add('nami');
+        })
+    })
 }
-function caer(){
-    console.log("key up");
-    console.log(style.top);
 
-    mainCharacter.style.top = 234.5 +"px";
-}
 

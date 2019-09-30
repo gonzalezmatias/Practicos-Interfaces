@@ -18,10 +18,37 @@
     height: 40px;
     position: relative;
     top: 234.5px;
+    left: 80px;
     background: url('total.png') left center;
     animation: play 0.8s steps(6) infinite;
 }
-
 @keyframes play {
     100% {background-position: -264px;}
+}
+
+.jump{
+    width: 34px;
+    height: 51px;
+    position: relative;
+    top: 234.5px;
+    left: 80px;
+    background: url('jump.png') left center;
+    animation: jump 0.8s;
+}
+@keyframes jump{
+    100% {top: 120px;}
+}
+
+.caer{
+    width: 34px;
+    height: 51px;
+    position: relative;
+    top: 120px;
+    left: 80px;
+    background: url('jump.png') left center;
+    animation: caer 0.8s;
+}
+
+@keyframes caer{
+    100% {top: 234.5px;}
 }
