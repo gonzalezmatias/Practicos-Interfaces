@@ -1,29 +1,26 @@
 "use strict";
 
-//  let mainCharacter = document.getElementById("character");
-
-// mainCharacter.addEventListener("keypress", saltar);
-
-const mainCharacter = document.getElementById('character');
-const style = getComputedStyle(mainCharacter);
-let initialPos = 234.5;
-console.log(style.top);
-
-document.addEventListener("keypress", saltar);
+window.addEventListener('DOMContentLoaded',(event) =>{
+  const nami = new Personaje('main-character');
+  const smoke = new Enemigo('main-enemigo');
 
 
 
-function saltar(){
-    mainCharacter.classList.remove('nami');
-    mainCharacter.classList.add('jump');
-    mainCharacter.addEventListener('animationend',function(e){
-        mainCharacter.classList.remove('jump');
-        mainCharacter.classList.add('caer');
-        mainCharacter.addEventListener('animationend',function(e){
-            mainCharacter.classList.remove('caer');
-            mainCharacter.classList.add('nami');
-        })
-    })
-}
+  function salto(e){
+    if (e.type == 'keydown') {
+      nami.saltar();
+    }
+  }
+
+  function inicio(){
+    nami.inicio();
+    smoke.inicio();
+
+  }
 
 
+  inicio();
+
+  window.addEventListener('keydown',salto);
+
+})

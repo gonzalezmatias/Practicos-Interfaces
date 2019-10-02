@@ -1,27 +1,58 @@
+/* parallax Scrolling */
+
 .main{
+    position: relative;
     margin: auto;
     width: 800px;
+}
+
+.backColor{
     height: 350px;
-    background: url('normal.png') left center;
-    background-size: auto;
-	background-repeat: repeat-x;
-    animation: back 4s linear infinite;
-    border: black 3px solid;
+    background: url('background/fondoAtras.png') left center;
+    background-size: cover;
+    z-index: -4;
+    animation: back 55s linear infinite;
+    box-shadow: 0px 0px 45px 0px rgba(0,0,0,1);
+
+}
+
+
+
+.tree{
+    top: 211px;
+    height:100px;
+    background: url('background/arboles.png') left center;
+    background-size: cover;
+    z-index: -2;
+    animation: back 30s linear infinite;
+
+}
+
+.floor{
+    top: 99px;
+    background: url('background/piso.png') left center;
+    background-size: cover;
+    z-index: -1;
+    animation: back 5s linear infinite;
 }
 
 @keyframes back {
-    100% {background-position: -641px;}
+    100% {background-position-x: -800px;}
 }
 
-.nami{
+/* -----------------personajes------------------- */
+
+.correr{
     width: 44px;
     height: 40px;
     position: relative;
-    top: 234.5px;
+    top: -34px;
     left: 80px;
     background: url('total.png') left center;
     animation: play 0.8s steps(6) infinite;
+    z-index: 100;
 }
+
 @keyframes play {
     100% {background-position: -264px;}
 }
@@ -30,25 +61,46 @@
     width: 34px;
     height: 51px;
     position: relative;
-    top: 234.5px;
+    top: -34px;
     left: 80px;
     background: url('jump.png') left center;
     animation: jump 0.8s;
 }
 @keyframes jump{
-    100% {top: 120px;}
+    0% {transform: translate(0px,0px);}
+    25% {transform: translate(0px,-80px);}
+    50% {transform: translate(0px,-100px);}
+    75% {transform: translate(0px,-80px);}
+    100% {transform: translate(0px,0px);}
 }
 
-.caer{
-    width: 34px;
-    height: 51px;
-    position: relative;
-    top: 120px;
+
+/* ------------enemigo------------------- */
+
+.atacar{
+    width: 42px;
+    height: 62px;
+    position: absolute;
+    top: -55px;
     left: 80px;
-    background: url('jump.png') left center;
-    animation: caer 0.8s;
+    background: url('enemigo.png') left center;
+    animation: atak 0.8s steps(5) infinite;
+    z-index: 100;
+}
+.mover{
+    animation: mov 7s linear infinite;
 }
 
-@keyframes caer{
-    100% {top: 234.5px;}
+@keyframes atak {
+    100% {background-position: -210px;}
+}
+
+
+
+@keyframes mov {
+    0% {transform: translate(700px,0px);}
+    25% {transform: translate(500px,0px);}
+    50% {transform: translate(300px,0px);}
+    75% {transform: translate(100px,0px);}
+    100% {transform: translate(-100px,0px);}
 }
